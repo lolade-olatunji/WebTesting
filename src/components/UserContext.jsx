@@ -4,8 +4,8 @@ export const UserContext = createContext();
 
 export const UserProvider = (props) => {
     const [user, setUser] = useState({
-      emailAddress: "",
-      password: "",
+      emailAddress: "paul@moneeyapp.com",
+      password: "Lolade",
     });
   
     return (

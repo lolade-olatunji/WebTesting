@@ -40,6 +40,9 @@ export default function Landingpage() {
                     <h5>Delegate to staff</h5>
                     <p>Easily see how much your businesses are earning on each transactions and watch your earnings rise.</p>
                    </div>  
+                   <div>
+                    <img src="/web/circle tick.png" alt="tick" className="ticked" />
+                    </div>
                 </div>
               </button>
             </div>

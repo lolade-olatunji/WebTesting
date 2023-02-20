@@ -1,8 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { UserContext } from "./UserContext";
 import '../styles/login.css';
 import { useNavigate } from 'react-router-dom';
+//import PasswordInput from "./passwordInput";
 
+let timeoutHander = null
 export default function Login() {
 
   const [user, setUser] = useContext(UserContext);
@@ -10,18 +12,25 @@ export default function Login() {
   const [password, setPassword]=useState("")
 
   const navigate=useNavigate()
+
+  const handeAutoLogout = useCallback(() => {
+     navigate('/')
+     clearTimeout(timeoutHander)
+  }, [navigate])
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    setUser({ emailAddress: "paul@moneeyapp.com", password: "Lolade" });
-    setTimeout(() => {
-      if(user.emailAddress === email && user.password === password){
-        navigate("/Dashboard")
-      }
-      else{
-        alert("invalid credentials")
-      }
-    }, 2000)
+     setUser({ emailAddress: "paul@moneeyapp.com", password: "Lolade" });
+    if(user.emailAddress === email && user.password === password){
+      navigate("/Dashboard")
+    }
+    else{
+      alert("invalid credentials")
+    }
+
+    timeoutHander = setTimeout(handeAutoLogout, 6000)
   };
+
 
 
    return (
@@ -58,7 +67,6 @@ export default function Login() {
                      required
                    />
                   </div>
-                
                     <button type="sumbit" class="log-button">Log in</button>
                
                 </form>
