@@ -28,7 +28,7 @@ export default function Login() {
       alert("invalid credentials")
     }
 
-    timeoutHander = setTimeout(handeAutoLogout, 12000)
+    timeoutHander = setTimeout(handeAutoLogout, 120000)
   };
 
 
